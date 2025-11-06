@@ -1,6 +1,6 @@
-import {  createContext, useState } from "react";
+import { createContext, useState } from "react";
 import axios from 'axios';
-import toast from "react-hot-toast"; 
+import toast from "react-hot-toast";
 import { useEffect } from "react";
 
 import { io } from "socket.io-client"
@@ -23,7 +23,8 @@ export const AuthProvider = ({ children }) => {
 
     const checkAuth = async () => {
         try {
-            const { data } = await axios.get("/api/auth/check");
+            const { data } = await axios.get("/api/auth/check");      
+
             if (data.success) {
                 setAuthUser(data.user)
                 connectSocket(data.user)
@@ -57,7 +58,6 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             toast.error(error.message)
         }
-
     }
 
     //  LOGOUT FUNCION TO HANDLE USER AND SOCKET DISCONNECTION 
@@ -75,7 +75,7 @@ export const AuthProvider = ({ children }) => {
 
     // Update profile function to handle user profile updates
 
-    const updateProfile =async  (body) => {
+    const updateProfile = async (body) => {
         try {
             const { data } = await axios.put("/api/auth/updateProfile", body)
             if (data.success) {
@@ -110,8 +110,8 @@ export const AuthProvider = ({ children }) => {
 
         if (token) {
             axios.defaults.headers.common["token"] = token;
+            checkAuth();
         }
-        checkAuth();
     }, [])
 
     const value = {
@@ -123,7 +123,6 @@ export const AuthProvider = ({ children }) => {
         logout,
         updateProfile
     }
-
     return (
         <AuthContext.Provider value={value}>
             {children}

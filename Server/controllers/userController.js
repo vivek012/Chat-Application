@@ -34,6 +34,8 @@ export const signUp = async (req, res) => {
 
         const token = generateToken(newUser._id)
 
+        console.log(token)
+
         res.status(200).json({
             success : true,
             token,
