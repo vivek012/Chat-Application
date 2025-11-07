@@ -46,7 +46,7 @@ const ProfilePage = () => {
           Save Details
         </button>
         </form> 
-        <img src={assets.logo_icon} alt="" className={`max-w-44 aspect-square rounded-full mx-10 max-sm:mt-10 ${selectedImg && "rounded-full"}`} />
+        <img src={ authUser?.profilePic || assets.logo_icon} alt="" className={`max-w-44 aspect-square rounded-full mx-10 max-sm:mt-10 ${selectedImg && "rounded-full"}`} />
       </div>
     </div>
   )
