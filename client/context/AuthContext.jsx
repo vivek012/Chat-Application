@@ -41,7 +41,9 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (state, credentials) => {
         try {
+            console.log("before ")
             const { data } = await axios.post(`/api/auth/${state}`, credentials);
+            console.log('after')
 
             if (data.success) {
                 setAuthUser(data.userData);
@@ -80,6 +82,7 @@ export const AuthProvider = ({ children }) => {
             const { data } = await axios.put("/api/auth/updateProfile", body)
             if (data.success) {
                 setAuthUser(data.user);
+                     
                 toast.success('Profile update Successfully')
             }
         } catch (error) {
