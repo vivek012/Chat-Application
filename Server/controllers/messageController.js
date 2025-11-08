@@ -111,9 +111,7 @@ export const sendMessage = async (req, res)=>{
 
         res.status(200).json({
             success: true,
-            data:{
-                newMessage
-            }
+            newMessage
         })
         
     } catch (error) {
