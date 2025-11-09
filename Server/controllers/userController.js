@@ -8,8 +8,8 @@ import bcrypt from "bcryptjs";
 // Signup a new user 
 
 export const signUp = async (req, res) => {
+    const { fullName, email, password, bio } = req.body;
     try {
-        const { fullName, email, password, bio } = req.body;
 
         if (!fullName && !email && !password && !bio) {
             return res.json({

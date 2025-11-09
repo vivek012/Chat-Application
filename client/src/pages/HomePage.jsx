@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import ChatContainer from '../components/ChatContainer'
 import RightSidebar from '../components/RightSidebar'
-import NewFile from '../components/NewFile'
+
 
 const HomePage = () => {
 
@@ -14,7 +14,6 @@ const HomePage = () => {
         <Sidebar/>
         <ChatContainer selectedUser={selectedUser} setSelectedUser={setSelectedUser}/>
         <RightSidebar selectedUser={selectedUser} setSelectedUser={setSelectedUser}/>
-        <NewFile></NewFile>
       </div>
     </div>
   )
