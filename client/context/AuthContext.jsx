@@ -43,11 +43,11 @@ export const AuthProvider = ({ children }) => {
         try {
             console.log("before ")
             const { data } = await axios.post(`/api/auth/${state}`, credentials);
-            console.log('after')
+            console.log(data)
 
             if (data.success) {
-                setAuthUser(data.userData);
-                connectSocket(data.userData);
+                setAuthUser(data.data.user);
+                connectSocket(data.data.user);
                 axios.defaults.headers.common['token'] = data.token;
                 setToken(data.token);
                 localStorage.setItem('token', data.token)
