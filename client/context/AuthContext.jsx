@@ -41,13 +41,13 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (state, credentials) => {
         try {
-            console.log("before ")
+
             const { data } = await axios.post(`/api/auth/${state}`, credentials);
-            console.log(data)
+
 
             if (data.success) {
-                setAuthUser(data.data.user);
-                connectSocket(data.data.user);
+                setAuthUser(data.user);
+                connectSocket(data.user);
                 axios.defaults.headers.common['token'] = data.token;
                 setToken(data.token);
                 localStorage.setItem('token', data.token)
@@ -81,7 +81,7 @@ export const AuthProvider = ({ children }) => {
         try {
             const { data } = await axios.put("/api/auth/updateProfile", body)
             if (data.success) {
-                setAuthUser(data.data.user);
+                setAuthUser(data.user);
                 toast.success('Profile update Successfully')
             }
         } catch (error) {

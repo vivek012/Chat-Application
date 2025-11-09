@@ -21,14 +21,14 @@ export const getUsersForSidebar = async  (req, res)=>{
         })
         await Promise.all(promises);
         res.status(200).json({
-            status: "success",
+            success: true,
             users: filteredUsers,
             unseenMessages
         })
 
     } catch (error) {
         console.log(error.message);
-
+        
         res.json({
             status : 'fail',
             message: error.message
@@ -49,10 +49,10 @@ export  const getMessages = async(req, res)=>{
             ]
         })                                  
 
-        await message.updateMany({senderId: selectedUserId, receiverId: myId}, {seen : true})
+        await message.updateMany({senderId: selectedUserId, receiverId: myId}, {seen : true});
 
         res.json({
-            status: "success",
+            success: true,
             messages
         })
         
@@ -60,7 +60,7 @@ export  const getMessages = async(req, res)=>{
          console.log(error.message);
 
         res.json({
-            status : 'fail',
+            success: false,
             message: error.message
         })
     }
@@ -86,7 +86,7 @@ export const markMessagesAsSeen = async (req, res)=>{
 
 export const sendMessage = async (req, res)=>{
     try {
-        const [text, image ]= req.params
+        const {text, image }= req.body;
         const receiverId = req.params.id
         const senderId = req.user._id
                

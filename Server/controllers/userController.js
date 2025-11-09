@@ -39,17 +39,13 @@ export const signUp = async (req, res) => {
         res.status(200).json({
             success : true,
             token,
-            data: {
-                user: newUser
-            }
+            user: newUser
         })
     } catch (error) {
         console.log(error.message)
         res.status(400).json({
             success: false,
-            data: {
-                message: error.message
-            }
+            message: error.message
         })
     }
 }
@@ -82,10 +78,9 @@ export const login = async (req, res) => {
         res.status(200).json({
             success: true,
             token,
-            data: {
-                user,
-                message: " Login sucessful"
-            }
+            user,
+            message: " Login sucessful"
+
         })
 
 
@@ -129,9 +124,7 @@ export const updateProfile = async (req, res) => {
 
         res.json({
             success: true,
-            data:{
-                user: updateUser
-            }
+            user: updateUser
         })
 
     } catch (error) {
