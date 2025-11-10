@@ -109,7 +109,7 @@ useEffect(()=>{
   ) : (
     <div className="flex  flex-col gap-2 max-md:hidden bg-white/10 items-center justify-center text-gray-500">
       <img src={assets.logo_icon} alt="" className='max-w-16' />
-      <p className="text-white font-medium text-lg">Chat anyTime, anywhere!!...</p>
+      <p className="text-white font-medium text-lg">Chat anyTime, anywhere!!!!!!!!!...</p>
     </div>
   )
 }
