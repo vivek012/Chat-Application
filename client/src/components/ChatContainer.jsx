@@ -9,6 +9,7 @@ const ChatContainer = () => {
   const { messages, selectedUser, setSelectedUser, sendMessage, getMessages } = useContext(ChatContext)
 
   const { authUser, onlineUsers } = useContext(AuthContext)
+  const [ishandleSendTriggered, setIsHandleSendTriggered] = useState(false)
 
   const scrollEnd = useRef();
 
@@ -19,9 +20,11 @@ const ChatContainer = () => {
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
-    if (input.trim() === "") return null;
+    if (input.trim() === "" || ishandleSendTriggered) return null;
+    setIsHandleSendTriggered(true)
     await sendMessage({ text: input.trim() });
     setInput("");
+    setIsHandleSendTriggered(false)
   }
 
 
